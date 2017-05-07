@@ -3,6 +3,8 @@ package main.model;
 import main.common.MessageProcessorConstants;
 import main.common.MessageProcessorConstants.AdjustmentType;
 
+import static main.common.MessageProcessorConstants.*;
+
 /**
  * Created by thimira on 06/05/17.
  */
@@ -10,7 +12,7 @@ public class AdjustmentMessage extends Message {
 
     private AdjustmentType adjustment;
 
-    public AdjustmentMessage(MessageProcessorConstants.MessageType messageType, String productType, double value, AdjustmentType adjustment) {
+    public AdjustmentMessage(MessageType messageType, String productType, double value, AdjustmentType adjustment) {
         super(messageType, productType, value);
         this.adjustment = adjustment;
     }
