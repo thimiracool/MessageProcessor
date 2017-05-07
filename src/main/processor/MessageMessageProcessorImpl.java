@@ -1,5 +1,6 @@
 package main.processor;
 
+import main.common.MessageProcessorConstants;
 import main.common.MessageProcessorConstants.MessageType;
 import main.exception.InvalidMessageFormatException;
 import main.model.AdjustmentMessage;
@@ -27,29 +28,34 @@ public class MessageMessageProcessorImpl implements MessageProcessor {
 
     @Override
     public int process(Message message) throws InvalidMessageFormatException {
-        // If message is not null and is not paused start processing the message.
+        // Start processing the message if message is not null and not paused.
         if (null != message && !isPaused) {
-            // Increment the message id count.
+            // Generate message id.
             messageId++;
             message.setMessageId(messageId);
-            // Record the incoming message in message store.
+            // Record the incoming message.
             messageStore.put(messageId, message);
 
-            // Based on message type select processing path.
-            MessageType messageType = message.getMessageType();
-            if (messageType.RECORD == messageType) {
-                recordMessageProcess(message);
-            } else if (messageType.BULK == messageType) {
-                bulkMessageProcess((BulkMessage) message);
-            } else if (messageType.ADJUSTMENT == messageType) {
-                adjustmentMessageProcess((AdjustmentMessage) message);
-            }
+            // Message processing based on message type.
+            messageProcessing(message);
 
             // Start message post processing to generate reports.
             messagePostProcessing();
         }
         return messageId;
 
+    }
+
+    private void messageProcessing(Message message) throws InvalidMessageFormatException {
+        // Based on message type select processing path.
+        MessageType messageType = message.getMessageType();
+        if (messageType.RECORD == messageType) {
+            recordMessageProcess(message);
+        } else if (messageType.BULK == messageType) {
+            bulkMessageProcess((BulkMessage) message);
+        } else if (messageType.ADJUSTMENT == messageType) {
+            adjustmentMessageProcess((AdjustmentMessage) message);
+        }
     }
 
     private void recordMessageProcess(Message message) throws InvalidMessageFormatException {
