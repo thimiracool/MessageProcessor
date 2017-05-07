@@ -8,6 +8,7 @@ import main.model.Message;
  */
 public interface MessageProcessor {
 
+    // Process message.
     int process(Message message) throws InvalidMessageFormatException;
 
 }

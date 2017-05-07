@@ -5,6 +5,6 @@ package main.report;
  */
 public interface ReportGenerator {
 
-    // reportGenerate
+    // Report Generate.
     void record(String message);
 }
