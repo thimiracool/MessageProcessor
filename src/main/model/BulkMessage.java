@@ -6,25 +6,25 @@ import main.common.MessageProcessorConstants;
  * Created by thimira on 06/05/17.
  */
 public class BulkMessage extends Message{
-    private int numberOfOccurence;
+    private int numberOfOccurrence;
 
-    public BulkMessage(MessageProcessorConstants.MessageType messageType, String productType, double value, int numberOfOccurence) {
+    public BulkMessage(MessageProcessorConstants.MessageType messageType, String productType, double value, int numberOfOccurrence) {
         super(messageType, productType, value);
-        this.numberOfOccurence = numberOfOccurence;
+        this.numberOfOccurrence = numberOfOccurrence;
     }
 
     public int getNumberOfOccurence() {
-        return numberOfOccurence;
+        return numberOfOccurrence;
     }
 
-    public void setNumberOfOccurence(int numberOfOccurence) {
-        this.numberOfOccurence = numberOfOccurence;
+    public void setNumberOfOccurrence(int numberOfOccurrence) {
+        this.numberOfOccurrence = numberOfOccurrence;
     }
 
     @Override
     public String toString() {
         return "BulkMessage{" +
-                "numberOfOccurence=" + numberOfOccurence +
+                "numberOfOccurrence=" + numberOfOccurrence +
                 "} " + super.toString();
     }
 }
