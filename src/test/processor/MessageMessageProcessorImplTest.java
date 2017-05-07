@@ -20,7 +20,9 @@ public class MessageMessageProcessorImplTest {
     public void testProcessRecordMessage() throws InvalidMessageFormatException {
         Message message = new Message(MessageType.RECORD, "apple", 20);
         MessageMessageProcessorImpl mp = new MessageMessageProcessorImpl();
+
         int messageId = mp.process(message);
+
         Assert.assertNotNull(messageId) ;
     }
 
@@ -28,7 +30,9 @@ public class MessageMessageProcessorImplTest {
     public void testProcessBulkMessage() throws InvalidMessageFormatException {
         BulkMessage bulkMessage = new BulkMessage(MessageType.BULK, "orange", 15, 30);
         MessageMessageProcessorImpl mp = new MessageMessageProcessorImpl();
+
         int messageId = mp.process(bulkMessage);
+
         Assert.assertNotNull(messageId) ;
     }
 
@@ -36,11 +40,43 @@ public class MessageMessageProcessorImplTest {
     public void testProcessAdjustmentMessage() throws InvalidMessageFormatException {
         AdjustmentMessage adjustmentMessage = new AdjustmentMessage(MessageType.ADJUSTMENT, "apple", 3.0, AdjustmentType.ADD);
         MessageMessageProcessorImpl mp = new MessageMessageProcessorImpl();
+
         int messageId = mp.process(adjustmentMessage);
+
         Assert.assertNotNull(messageId) ;
     }
 
+    @Test(expected = InvalidMessageFormatException.class)
+    public void testExceptionWithEmptyProductType() throws InvalidMessageFormatException {
+        Message message = new Message(MessageType.RECORD, "", 20);
+        MessageMessageProcessorImpl mp = new MessageMessageProcessorImpl();
+
+        mp.process(message);
+    }
+
+    @Test(expected = InvalidMessageFormatException.class)
+    public void testExceptionWithNullProductType() throws InvalidMessageFormatException {
+        Message message = new Message(MessageType.RECORD, null, 20);
+        MessageMessageProcessorImpl mp = new MessageMessageProcessorImpl();
+
+        mp.process(message);
+    }
+
+    @Test(expected = InvalidMessageFormatException.class)
+    public void testExceptionWithNegativeProductValue() throws InvalidMessageFormatException {
+        Message message = new Message(MessageType.RECORD, "apple", -20);
+        MessageMessageProcessorImpl mp = new MessageMessageProcessorImpl();
+
+        mp.process(message);
+    }
 
 
+    @Test(expected = InvalidMessageFormatException.class)
+    public void testExceptionWithNegativeNumberOfOccurrences() throws InvalidMessageFormatException {
+        BulkMessage bulkMessage = new BulkMessage(MessageType.BULK, "orange", 15, -30);
+        MessageMessageProcessorImpl mp = new MessageMessageProcessorImpl();
+
+        mp.process(bulkMessage);
+    }
 
 }

@@ -11,7 +11,7 @@ import main.model.Message;
 public class MessageProcessorValidationUtility {
 
     public static void isRecordMessageValid(Message message) throws InvalidMessageFormatException {
-        if (null == message.getProductType() && "" == message.getProductType())
+        if (null == message.getProductType() || "" == message.getProductType())
         {
             throw new InvalidMessageFormatException("Message Product Type can not be null or empty !");
         }
@@ -22,7 +22,7 @@ public class MessageProcessorValidationUtility {
 
     }
     public static void isBulkMessageValid(BulkMessage message) throws InvalidMessageFormatException {
-        if (null == message.getProductType() && "" == message.getProductType())
+        if (null == message.getProductType() || "" == message.getProductType())
         {
             throw new InvalidMessageFormatException("Bulk Message Product Type can not be null or empty !");
         }
@@ -37,7 +37,7 @@ public class MessageProcessorValidationUtility {
     }
 
     public static void isAdjustmentMessageValid(AdjustmentMessage message) throws InvalidMessageFormatException {
-        if (null == message.getProductType() && "" == message.getProductType())
+        if (null == message.getProductType() || "" == message.getProductType())
         {
             throw new InvalidMessageFormatException("Adjustment Message Product Type can not be null or empty !");
         }
