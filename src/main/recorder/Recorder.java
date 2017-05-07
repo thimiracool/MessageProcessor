@@ -5,5 +5,5 @@ package main.recorder;
  */
 public interface Recorder {
     // record
-    void record();
+    void record(String message);
 }

@@ -1,0 +1,3 @@
+Message{messageId=0, messageType=RECORD, ProductType='apple', value=20.0}
+Message{messageId=0, messageType=RECORD, ProductType='apple', value=20.0}
+Message{messageId=0, messageType=RECORD, ProductType='apple', value=20.0}
