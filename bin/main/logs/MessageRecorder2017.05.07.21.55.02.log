@@ -1,0 +1,15 @@
+ProductName : orange  Total : 690.0
+ProductName : apple  Total : 80.0
+ProductName : orange  Total : 690.0
+ProductName : apple  Total : 180.0
+ProductName : orange  Total : 690.0
+ProductName : apple  Total : 280.0
+ProductName : orange  Total : 690.0
+ProductName : apple  Total : 380.0
+ProductName : orange  Total : 690.0
+ProductName : apple  Total : 480.0
+Message Processing is pausing ....
+Sales Type : orange  Adjustment OperationADD  Adjustment Value3.0
+Message Processing resumes ....
+ProductName : orange  Total : 690.0
+ProductName : apple  Total : 580.0
