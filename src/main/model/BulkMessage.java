@@ -13,7 +13,7 @@ public class BulkMessage extends Message{
         this.numberOfOccurrence = numberOfOccurrence;
     }
 
-    public int getNumberOfOccurence() {
+    public int getNumberOfOccurrence() {
         return numberOfOccurrence;
     }
 

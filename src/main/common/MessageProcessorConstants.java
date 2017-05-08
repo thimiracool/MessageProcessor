@@ -5,6 +5,6 @@ package main.common;
  */
 public class MessageProcessorConstants {
 
-    public enum AdjustmentType  {ADD, SUBTRACT, MULTIPLY};
-    public enum MessageType {RECORD, BULK, ADJUSTMENT};
+    public enum AdjustmentType  {ADD, SUBTRACT, MULTIPLY}
+    public enum MessageType {RECORD, BULK, ADJUSTMENT}
 }

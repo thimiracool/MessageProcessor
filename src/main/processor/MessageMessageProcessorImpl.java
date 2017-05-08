@@ -1,7 +1,5 @@
 package main.processor;
 
-import main.common.MessageProcessorConstants;
-import main.common.MessageProcessorConstants.MessageType;
 import main.exception.InvalidMessageFormatException;
 import main.model.AdjustmentMessage;
 import main.model.BulkMessage;
@@ -49,11 +47,11 @@ public class MessageMessageProcessorImpl implements MessageProcessor {
     private void messageProcessing(Message message) throws InvalidMessageFormatException {
         // Based on message type select processing path.
         MessageType messageType = message.getMessageType();
-        if (messageType.RECORD == messageType) {
+        if (MessageType.RECORD == messageType) {
             recordMessageProcess(message);
-        } else if (messageType.BULK == messageType) {
+        } else if (MessageType.BULK == messageType) {
             bulkMessageProcess((BulkMessage) message);
-        } else if (messageType.ADJUSTMENT == messageType) {
+        } else if (MessageType.ADJUSTMENT == messageType) {
             adjustmentMessageProcess((AdjustmentMessage) message);
         }
     }
@@ -89,7 +87,7 @@ public class MessageMessageProcessorImpl implements MessageProcessor {
         // Retrieve product value.
         double productValue = bulkMessage.getValue();
         // Retrieve occurrences of the bulk message.
-        int numberOfProducts = bulkMessage.getNumberOfOccurence();
+        int numberOfProducts = bulkMessage.getNumberOfOccurrence();
         // Create single product using retrieved information.
         Product product = new Product(productType, productValue);
         ArrayList<Product> values;

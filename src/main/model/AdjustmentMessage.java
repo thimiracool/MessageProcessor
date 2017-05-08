@@ -1,8 +1,5 @@
 package main.model;
 
-import main.common.MessageProcessorConstants;
-import main.common.MessageProcessorConstants.AdjustmentType;
-
 import static main.common.MessageProcessorConstants.*;
 
 /**
